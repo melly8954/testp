@@ -5,19 +5,19 @@ import java.util.Scanner;
 public class BankApplication {
     private AccountService accountService = new AccountService();
 
-    private void Header() {
+    public void Header() {
         System.out.println("======================================");
         System.out.println("1.계좌생성|2.계좌목록|3.예금|4.출금|5.종료|");
         System.out.println("=====================================");
     }
 
-    private int option(Scanner scan) throws Exception {
+    public int option(Scanner scan) throws Exception {
         System.out.print("선택 > ");
         String a = scan.nextLine();
         return Integer.parseInt(a);
     }
 
-    private void addAccount(Scanner scan) throws Exception {
+    public void addAccount(Scanner scan) throws Exception {
         System.out.println("--------");
         System.out.println("계좌생성");
         System.out.println("--------");
@@ -33,7 +33,7 @@ public class BankApplication {
         this.accountService.addAccount(new Account(name, accountNumber, money));
     }
 
-    private void printAccount(){
+    public void printAccount(){
         for(Account account : this.accountService.getAllAccount()){
             System.out.println(account.toString());
         }
@@ -57,7 +57,7 @@ public class BankApplication {
         return new Account("임시명", accountNumber, money);
     }
 
-    private void tryDeposit(Scanner scan){
+    public void tryDeposit(Scanner scan){
         Account objectDeposit =getscanConsole(scan,"예금");
             if( objectDeposit == null){
                 System.out.println("계좌가 존재하지 않습니다.");
@@ -71,7 +71,7 @@ public class BankApplication {
             }
     }
 
-    private void tryWithdraw(Scanner scan){
+    public void tryWithdraw(Scanner scan){
         Account objectDeposit = getscanConsole(scan,"출금");
         if( objectDeposit == null){
             System.out.println("계좌가 존재하지 않습니다.");
