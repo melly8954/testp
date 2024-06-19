@@ -6,9 +6,9 @@ public class BankApplication {
     private AccountService accountService = new AccountService();
 
     private void Header() {
-        System.out.println("========================================================");
-        System.out.println("1.계좌생성|2.계좌목록|3.예금|4.출금|5.종료|6.파일읽기|7.파일저장");
-        System.out.println("========================================================");
+        System.out.println("======================================");
+        System.out.println("1.계좌생성|2.계좌목록|3.예금|4.출금|5.종료|");
+        System.out.println("=====================================");
     }
 
     private int option(Scanner scan) throws Exception {
@@ -113,7 +113,7 @@ public class BankApplication {
                         run = false;
                         break;
                     default:
-                        System.out.println("!!! 잘못된 입력입니다. !!!");
+                        System.out.println(" 입력 옵션 범위는 1 부터 5 까지 입니다.\n다시 입력해주세요.");
                         break;
                 }
             }

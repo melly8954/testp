@@ -18,6 +18,7 @@ public class AccountServiceTests {
         Account find = accountService.findAccountNumber("111-111");
         assertThat(find).isNotNull();
         assertThat(find.getName()).isEqualTo("홍길동");
+        assertThat(find.getAccountNumber()).isEqualTo("111-111");
         assertThat(find.getCurrentMoney()).isEqualTo(20000);
     }
 
