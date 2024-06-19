@@ -9,21 +9,21 @@ import lombok.Setter;
 public class Account {
     private String name;
     private String accountNumber;
-    private int firstMoney;
+    private long currentMoney;
 
     public Account(){
 
     }
 
-    public Account(String name,String accountNumber,int firstMoney){
+    public Account(String name,String accountNumber,long currentMoney){
         this.name=name;
         this.accountNumber=accountNumber;
-        this.firstMoney=firstMoney;
+        this.currentMoney = currentMoney;
     }
 
     @Override
     public String toString() {
         return String.format("Account{name='%s', accountNumber='%s', firstMoney='%d'}"
-            ,this.name,this.accountNumber,this.firstMoney);
+            ,this.name,this.accountNumber,this.currentMoney);
     }
 }

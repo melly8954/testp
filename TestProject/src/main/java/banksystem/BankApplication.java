@@ -27,8 +27,8 @@ public class BankApplication {
         System.out.print("계좌주:");
         String name = scan.nextLine();
         System.out.print("초기입금액:");
-        String firstMoney = scan.nextLine();
-        int money = Integer.parseInt(firstMoney);
+        String currentMoney = scan.nextLine();
+        long money = Long.parseLong(currentMoney);
 
         this.accountService.addAccount(new Account(name, accountNumber, money));
     }
@@ -51,36 +51,33 @@ public class BankApplication {
             return null;
         }
         System.out.print(title + "액:");
-        String howMoney = scan.nextLine();
-        int money = Integer.parseInt(howMoney);
+        String depositMoney = scan.nextLine();
+        long money = Long.parseLong(depositMoney);
 
         return new Account("임시명", accountNumber, money);
     }
 
     private void tryDeposit(Scanner scan){
-        Account result =getscanConsole(scan,"예금");
-            if( result == null){
+        Account objectDeposit =getscanConsole(scan,"예금");
+            if( objectDeposit == null){
                 System.out.println("계좌가 존재하지 않습니다.");
                 return;
             }
-            if(result.getFirstMoney()>0){
-                if(this.accountService.depositMoney(result.getAccountNumber(), result.getFirstMoney())){
-                    System.out.println("예금이 성공했습니다.");
+            if(this.accountService.depositMoney(objectDeposit.getAccountNumber(), objectDeposit.getCurrentMoney())){
+                System.out.println("예금이 성공했습니다.");
             }
             else{
-                System.out.println("예금이 실패했습니다.");
+                System.out.println("예금이 실패했습니다.\n1원 이상 금액을 넣어주세요.");
             }
-
-        }
     }
 
     private void tryWithdraw(Scanner scan){
-        Account result = getscanConsole(scan,"출금");
-        if( result == null){
+        Account objectDeposit = getscanConsole(scan,"출금");
+        if( objectDeposit == null){
             System.out.println("계좌가 존재하지 않습니다.");
             return;
         }
-        if(this.accountService.withdrawMoney(result.getAccountNumber(), result.getFirstMoney())){
+        if(this.accountService.withdrawMoney(objectDeposit.getAccountNumber(), objectDeposit.getCurrentMoney())){
             System.out.println("출금이 성공했습니다.");
         }
         else{

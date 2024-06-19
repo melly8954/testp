@@ -18,7 +18,7 @@ public class AccountServiceTests {
         Account find = accountService.findAccountNumber("111-111");
         assertThat(find).isNotNull();
         assertThat(find.getName()).isEqualTo("홍길동");
-        assertThat(find.getFirstMoney()).isEqualTo(20000);
+        assertThat(find.getCurrentMoney()).isEqualTo(20000);
     }
 
     @Test
@@ -33,7 +33,7 @@ public class AccountServiceTests {
 
         Account find = accountService.findAccountNumber("222-222");
         assertThat(find).isNotNull();
-        assertThat(find.getFirstMoney()).isEqualTo(40000);
+        assertThat(find.getCurrentMoney()).isEqualTo(40000);
 
         Account find2 = accountService.findAccountNumber("444-444");
         assertThat(find2).isNull();
@@ -50,7 +50,7 @@ public class AccountServiceTests {
 
         Account find = accountService.findAccountNumber("333-333");
         assertThat(find).isNotNull();
-        assertThat(find.getFirstMoney()).isEqualTo(20000);
+        assertThat(find.getCurrentMoney()).isEqualTo(20000);
 
         Account find2 = accountService.findAccountNumber("555-555");
         assertThat(find2).isNull();
@@ -60,7 +60,7 @@ public class AccountServiceTests {
 
         Account find3 = accountService.findAccountNumber("333-333");
         assertThat(find3).isNotNull();
-        assertThat(find3.getFirstMoney()).isEqualTo(20000);
+        assertThat(find3.getCurrentMoney()).isEqualTo(20000);
 
     }
 }

@@ -26,11 +26,11 @@ public class AccountService {
      * 계좌(Account) 배열에 계좌정보(Account) 를 추가한다.
      * @param name : 계좌대표이름
      * @param accountNumber : 계좌번호
-     * @param firstMoney : 초기금액
+     * @param currentMoney : 초기금액
      * @return : true or false
      */
-    public boolean addAccount(String name, String accountNumber, int firstMoney){
-        return this.accountList.add(new Account(name,accountNumber,firstMoney));
+    public boolean addAccount(String name, String accountNumber, long currentMoney){
+        return this.accountList.add(new Account(name,accountNumber,currentMoney));
                     // 클래스 Account 라서 new 사용
     }
 
@@ -64,29 +64,27 @@ public class AccountService {
         return null;
     }
 
-    public boolean depositMoney(String accountNumber, int money){
+    public boolean depositMoney(String accountNumber, long money){
         Account account = this.findAccountNumber(accountNumber);
         if( account == null){
             return false;
         }
         if( money>0){
-            account.setFirstMoney(account.getFirstMoney()+money);
+            account.setCurrentMoney(account.getCurrentMoney()+money);
             return true;
         }
         else{
             return false;
         }
-
-
     }
 
-    public boolean withdrawMoney(String accountNumber, int money){
+    public boolean withdrawMoney(String accountNumber, long money){
         Account account = this.findAccountNumber(accountNumber);
         if( account == null ){
             return false;
         }
-        if(account.getFirstMoney()>=money){
-            account.setFirstMoney(account.getFirstMoney()-money);
+        if(account.getCurrentMoney()>=money){
+            account.setCurrentMoney(account.getCurrentMoney()-money);
             return true;
         }
         else{
